@@ -4,22 +4,33 @@ import './App.css';
 const MeetTheTeam = () => {
   const members = [
     {
+      name: "Akinniyi Akinwande",
+      linkedin: "https://www.linkedin.com/in/akinniyi-akinwande-02a6121b9",
+      role: "Project Lead & Data Scientst",
+      contribution: "Trained and built the ML model"
+    },
+    {
+      name: "Mariam Rasaq",
+      linkedin: "https://www.linkedin.com/in/mariam-rasaq-887425249",
+      role: "Hater",
+      contribution: "Hating and jumping to conclusions"
+    },
+    {
+      name: " John Samuel",
+      linkedin: "/",
+      role: "Contributor",
+      contribution: ""
+    },
+    {
+      name: "Modinat",
+      linkedin: "/",
+      role: "Eat Alone",
+      contribution: "Enabling the hater"
+    },{
       name: "Ibrahim Akinyele",
       linkedin: "https://linkedin.com/in/akinyelib",
-      role: "Project Lead & Backend Developer",
-      contribution: "Designed Flask API and ML integration"
-    },
-    {
-      name: "Akinniyi Akinwande",
-      linkedin: "https://linkedin.com/in/jane-doe",
-      role: "Frontend Developer",
-      contribution: "Built React UI and routing"
-    },
-    {
-      name: "John Smith",
-      linkedin: "https://linkedin.com/in/john-smith",
-      role: "Data Scientist",
-      contribution: "Trained logistic regression model"
+      role: "Developer",
+      contribution: "Web App"
     }
   ];
 
