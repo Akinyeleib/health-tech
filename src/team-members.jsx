@@ -35,23 +35,37 @@ const MeetTheTeam = () => {
   ];
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Project Team</h1>
-      <ul className="space-y-4">
-        {members.map((member, idx) => (
-          <li key={idx} className="p-4 bg-white shadow rounded border">
-            <p><strong>Name:</strong> {member.name}</p>
-            <p><strong>Role:</strong> {member.role}</p>
-            <p><strong>Contribution:</strong> {member.contribution}</p>
-            <p>
-              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                LinkedIn Profile
-              </a>
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+<div className="min-h-screen bg-gray-50 px-4 py-10">
+  <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-8">
+    <h1 className="text-3xl font-bold text-black-700 mb-8 text-center">Project Team</h1>
+
+    <ul className="space-y-6">
+      {members.map((member, idx) => (
+        <li
+          key={idx}
+          className="p-6 bg-gray-100 rounded-lg border border-gray-200 hover:shadow-md transition-shadow"
+        >
+          <p className="text-lg font-semibold text-gray-800">{member.name}</p>
+          <p className="text-sm text-gray-600 mb-1">
+            <span className="font-medium">Role:</span> {member.role}
+          </p>
+          <p className="text-sm text-gray-600 mb-2">
+            <span className="font-medium">Contribution:</span>{' '}
+            {member.contribution || 'Not specified'}
+          </p>
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-orange-600 text-sm hover:underline font-medium"
+          >
+            View LinkedIn →
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
   );
 }
 

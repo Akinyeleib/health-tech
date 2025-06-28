@@ -21,23 +21,33 @@ function Predictions() {
   }, [token]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">My Predictions</h2>
+  <div className="min-h-screen bg-gray-50 px-4 py-8">
+    <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+      <h2 className="text-2xl font-bold text-black-700 mb-6">My Predictions</h2>
+
       {predictions.length > 0 ? (
-        <ul className="space-y-2">
-          {predictions.map(pred => (
-            <li key={pred.id} className="border p-2">
-              <Link to={`/predictions/${pred.id}`} className="text-blue-600">
+        <ul className="space-y-4">
+          {predictions.map((pred) => (
+            <li
+              key={pred.id}
+              className="border border-gray-200 p-4 rounded-lg hover:shadow-md transition-shadow"
+            >
+              <Link
+                to={`/predictions/${pred.id}`}
+                className="block text-lg text-gray-800 hover:text-orange-900 font-medium"
+              >
                 {pred.cancer_risk} - {pred.emergency_status}
               </Link>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No predictions found.</p>
+        <p className="text-gray-600 text-center">No predictions found.</p>
       )}
     </div>
-  );
+  </div>
+);
+
 }
 
 export default Predictions;
