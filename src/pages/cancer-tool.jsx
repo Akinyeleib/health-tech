@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './cancer-tool.css';
-import axiosReq from '../interceptor';
+import axiosReq from '../../interceptor';
 
 const CancerTool = () => {
   const [painSeverity, setPainSeverity] = useState(0);
@@ -18,8 +18,6 @@ const CancerTool = () => {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }
       );
-      console.log('status:', response.status)
-      console.log('data:', response.data)
 
       if (response.status != 200) throw new Error('Network response not ok');
       const resultData = response.data
