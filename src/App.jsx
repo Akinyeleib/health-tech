@@ -22,6 +22,9 @@ function App() {
               CancerTool
             </Link>
             <nav className="hidden md:flex gap-6">
+              <Link to="/" className="text-black-700 font-semibold hover:underline">
+                Home
+              </Link>
               <Link to="/team" className="text-black-700 font-semibold hover:underline">
                 Team
               </Link>
@@ -51,6 +54,9 @@ function App() {
           </div>
           {menuOpen && (
             <nav className="mt-4 flex flex-col gap-3 md:hidden">
+              <Link to="/" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
+                Home
+              </Link>
               <Link to="/team" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
                 Team
               </Link>
