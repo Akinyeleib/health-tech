@@ -10,22 +10,10 @@ const MeetTheTeam = () => {
       contribution: "Trained and developed the machine learning models and built the Flask application framework"
     },
     {
-      name: "Mariam Rasaq",
-      linkedin: "https://www.linkedin.com/in/mariam-rasaq-887425249",
-      role: "Deputy Project Lead ",
-      contribution: "Documented files in the GitHub repository, provided annotations, and designed presentations"
-    },
-    {
-      name: " John Samuel",
+      name: "Boluwatife Shokunbi",
       linkedin: "",
       role: "Member",
       contribution: "Conducted SQL analysis and generated insights"
-    },
-    {
-      name: "Abioye Modinat",
-      linkedin: "",
-      role: "Member",
-      contribution: "Clarified the problem statement and performed Power BI analysis"
     },
     {
       name: "Ibrahim Akinyele",
@@ -34,7 +22,19 @@ const MeetTheTeam = () => {
       contribution: "Developed the web application for deployment"
     },
     {
-      name: "Boluwatife Shokunbi",
+      name: "Mariam Rasaq",
+      linkedin: "https://www.linkedin.com/in/mariam-rasaq-887425249",
+      role: "Deputy Project Lead ",
+      contribution: "Documented files in the GitHub repository, provided annotations, and designed presentations"
+    },
+    {
+      name: "Modinat Abioye",
+      linkedin: "",
+      role: "Member",
+      contribution: "Clarified the problem statement and performed Power BI analysis"
+    },
+    {
+      name: "Samuel John",
       linkedin: "",
       role: "Member",
       contribution: "Conducted SQL analysis and generated insights"
