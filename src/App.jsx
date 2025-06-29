@@ -80,7 +80,8 @@ function App() {
         </header>
         <div className="mt-6">
           <Routes>
-            <Route path="/" element={<CancerTool />} />
+          <Route path="/" element={<CancerTool />} />
+          <Route path="/home" element={<CancerTool />} />
             <Route path="/team" element={<MeetTheTeam />} />
             <Route path="/cancer-tool" element={<CancerTool />} />
             <Route path="/register" element={<Register />} />
