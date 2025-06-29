@@ -16,6 +16,8 @@ function Login() {
     try {
       const res = await axiosReq.post('/login', form);
       localStorage.setItem('health-tech-token', res.data.token);
+      localStorage.setItem('health-tech-full-name', res.data.full_name);
+      localStorage.setItem('health-tech-phone-number', res.data.phone_number);
       setMessage('Login successful');setTimeout(() => {
         navigate('/home')
       }, 1500)
