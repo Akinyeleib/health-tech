@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axiosReq from '../../interceptor';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,11 +14,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/login', form);
-      localStorage.setItem('token', res.data.token);
-      setMessage('Login successful');
+      const res = await axiosReq.post('/login', form);
+      localStorage.setItem('health-tech-token', res.data.token);
+      setMessage('Login successful');setTimeout(() => {
+        navigate('/home')
+      }, 1500)
     } catch (err) {
-      setMessage(err.response?.data?.error || 'Login failed');
+      setMessage(err.response?.data?.message || 'Login failed');
     }
   };
 
@@ -27,12 +31,12 @@ function Login() {
 
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label className="block text-gray-700 font-medium mb-1">Email Address</label>
+        <label className="block text-gray-700 font-medium mb-1">Phone Number</label>
         <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          value={form.email}
+          type="text"
+          name="phone_number"
+          placeholder="Enter your Phone Number"
+          value={form.phone_number}
           onChange={handleChange}
           required
           className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
