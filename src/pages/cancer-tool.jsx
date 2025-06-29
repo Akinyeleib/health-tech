@@ -10,6 +10,7 @@ const CancerTool = () => {
     minimim: 32,
     maximum: 100
   }
+  const full_name = localStorage.getItem('health-tech-full-name') || undefined
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +41,9 @@ return (
         Cancer Risk & Emergency Detection Tool
       </h1>
       <p className="text-gray-600 text-center mb-2">
+        { full_name && (
+          <h2> Welcome {full_name}! </h2>
+        ) }
         Enter your symptoms to assess cancer risk and detect potential emergencies.
       </p>
       <p className="text-sm text-yellow-600 italic text-center mb-6">
