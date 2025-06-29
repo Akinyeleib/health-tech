@@ -17,13 +17,13 @@ const MeetTheTeam = () => {
     },
     {
       name: " John Samuel",
-      linkedin: "/",
+      linkedin: "",
       role: "Contributor",
       contribution: ""
     },
     {
       name: "Abioye Modinat",
-      linkedin: "/",
+      linkedin: "",
       role: "Data Scientist",
       contribution: "Designed the Powerpoint Presentation File"
     },
@@ -35,7 +35,7 @@ const MeetTheTeam = () => {
     },
     {
       name: "Boluwatife",
-      linkedin: "/",
+      linkedin: "",
       role: "Data Scientist",
       contribution: ""
     }
