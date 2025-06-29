@@ -22,15 +22,22 @@ const MeetTheTeam = () => {
       contribution: ""
     },
     {
-      name: "Modinat",
+      name: "Abioye Modinat",
       linkedin: "/",
-      role: "Eat Alone",
-      contribution: "Enabling the hater"
-    },{
+      role: "Data Scientist",
+      contribution: "Designed the Powerpoint Presentation File"
+    },
+    {
       name: "Ibrahim Akinyele",
       linkedin: "https://linkedin.com/in/akinyelib",
-      role: "Developer",
+      role: "Software Engineer",
       contribution: "Web App"
+    },
+    {
+      name: "Boluwatife",
+      linkedin: "/",
+      role: "Data Scientist",
+      contribution: "-"
     }
   ];
 
