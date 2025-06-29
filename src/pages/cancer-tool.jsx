@@ -5,6 +5,11 @@ import axiosReq from '../../interceptor';
 const CancerTool = () => {
   const [painSeverity, setPainSeverity] = useState(0);
   const [result, setResult] = useState(null);
+  const age_limit = {
+    default: 21,
+    minimim: 32,
+    maximum: 100
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,13 +51,13 @@ return (
           <h3 className="text-xl font-semibold text-gray-700 mb-4">Demographic Information</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <label className="block text-sm font-medium text-gray-700">
-              Age (18–100)
+              Age ({age_limit.minimim} - {age_limit.maximum})
               <input
                 type="number"
                 name="age"
-                min="18"
-                max="100"
-                defaultValue={20}
+                min={ age_limit.minimim }
+                max={ age_limit.maximum }
+                defaultValue={ age_limit.default }
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               />
