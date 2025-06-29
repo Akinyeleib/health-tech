@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 function Profile() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(undefined);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -10,7 +9,7 @@ function Profile() {
       phone_number: localStorage.getItem('health-tech-phone-number') || undefined,
       name:localStorage.getItem('health-tech-full-name') || undefined
     })
-  })
+  }, [])
   // useEffect(() => {
   //   const fetchProfile = async () => {
   //     try {
@@ -43,7 +42,13 @@ function Profile() {
       </div>
     ) : (
       <p className="text-center text-red-600 font-medium">
-        Unable to load profile.
+        Unable to load profile.<br/>
+        <h2>Navigating to login page...</h2>
+        {
+          setTimeout(() => {
+            navigate('/login')
+          }, 1500)
+        }
       </p>
     )}
   </div>
