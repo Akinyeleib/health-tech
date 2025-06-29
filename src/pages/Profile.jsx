@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const [profile, setProfile] = useState(undefined);
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    setProfile({
-      phone_number: localStorage.getItem('health-tech-phone-number') || undefined,
-      name:localStorage.getItem('health-tech-full-name') || undefined
-    })
+    const phone_number = localStorage.getItem('health-tech-phone-number') || undefined
+    const name = localStorage.getItem('health-tech-full-name') || undefined
+    if (name && profile) {
+      setProfile({
+        phone_number,
+        name
+      })
+    }
   }, [])
+
   // useEffect(() => {
   //   const fetchProfile = async () => {
   //     try {
@@ -42,8 +49,7 @@ function Profile() {
       </div>
     ) : (
       <p className="text-center text-red-600 font-medium">
-        Unable to load profile.<br/>
-        <h2>Navigating to login page...</h2>
+        <h2>Login is required to access this page. Redirecting to login page</h2>
         {
           setTimeout(() => {
             navigate('/login')
