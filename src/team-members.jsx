@@ -6,38 +6,38 @@ const MeetTheTeam = () => {
     {
       name: "Akinniyi Akinwande",
       linkedin: "https://www.linkedin.com/in/akinniyi-akinwande-02a6121b9",
-      role: "Project Lead & Data Scientst",
-      contribution: "Trained and built the ML model"
+      role: "Project Lead",
+      contribution: "Trained and developed the machine learning models and built the Flask application framework"
     },
     {
       name: "Mariam Rasaq",
       linkedin: "https://www.linkedin.com/in/mariam-rasaq-887425249",
-      role: "Hater",
-      contribution: "Hating and jumping to conclusions"
+      role: "Deputy Project Lead ",
+      contribution: "Documented files in the GitHub repository, provided annotations, and designed presentations"
     },
     {
       name: " John Samuel",
       linkedin: "",
-      role: "Contributor",
-      contribution: ""
+      role: "Member",
+      contribution: "Conducted SQL analysis and generated insights"
     },
     {
       name: "Abioye Modinat",
       linkedin: "",
-      role: "Data Scientist",
-      contribution: "Designed the Powerpoint Presentation File"
+      role: "Member",
+      contribution: "Clarified the problem statement and performed Power BI analysis"
     },
     {
       name: "Ibrahim Akinyele",
       linkedin: "https://linkedin.com/in/akinyelib",
-      role: "Software Engineer",
-      contribution: "Web App"
+      role: "Member",
+      contribution: "Developed the web application for deployment"
     },
     {
-      name: "Boluwatife",
+      name: "Boluwatife Shokunbi",
       linkedin: "",
-      role: "Data Scientist",
-      contribution: ""
+      role: "Member",
+      contribution: "Conducted SQL analysis and generated insights"
     }
   ];
 
