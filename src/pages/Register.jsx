@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import axiosReq from '../../interceptor';
 
 function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
+  const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,11 +14,16 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true)
     try {
-      const res = await axios.post('/register', form);
+      const res = await axiosReq.post('/register', form);
       setMessage(res.data.message);
+      setTimeout(() => {
+        navigate('/login')
+      }, 1500)
     } catch (err) {
-      setMessage(err.response?.data?.error || 'Registration failed');
+      setMessage(err?.response?.data?.message || 'Registration failed');
+      setDisabled(false)
     }
   };
 
@@ -39,12 +47,12 @@ function Register() {
       </div>
 
       <div>
-        <label className="block text-gray-700 font-medium mb-1">Email Address</label>
+        <label className="block text-gray-700 font-medium mb-1">Phone Number</label>
         <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          value={form.email}
+          type="text"
+          name="phone_number"
+          placeholder="Enter your Nigerian Phone Number"
+          value={form.phone_number}
           onChange={handleChange}
           required
           className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -66,6 +74,7 @@ function Register() {
 
       <button
         type="submit"
+        disabled={disabled}
         className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 rounded-md transition-colors"
       >
         Register
