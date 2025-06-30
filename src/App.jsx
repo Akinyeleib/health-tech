@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import CancerTool from './pages/cancer-tool';
 import MeetTheTeam from './team-members';
@@ -12,6 +12,16 @@ import Profile from './pages/Profile';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+
+  useEffect(() => {
+    const phone_number = localStorage.getItem('health-tech-phone-number') || undefined
+    const name = localStorage.getItem('health-tech-full-name') || undefined
+    const token = localStorage.getItem('health-tech-token') || undefined
+    const is_logged_in = token !== undefined && name !== undefined && phone_number !== undefined
+    setIsLoggedIn(is_logged_in)
+  }, [])
 
   return (
     <Router>
@@ -28,15 +38,19 @@ function App() {
               <Link to="/team" className="text-black-700 font-semibold hover:underline">
                 Team
               </Link>
-              <Link to="/register" className="text-black-700 font-semibold hover:underline">
-                Register
-              </Link>
-              <Link to="/login" className="text-black-700 font-semibold hover:underline">
-                Login
-              </Link>
-              <Link to="/login" className="text-black-700 font-semibold hover:underline">
-                Logout
-              </Link>
+              {
+                isLoggedIn ? 
+                  <Link to="/login" className="text-black-700 font-semibold hover:underline">
+                  Logout
+                </Link>
+                : <> <Link to="/register" className="text-black-700 font-semibold hover:underline">
+                    Register
+                  </Link>
+                  <Link to="/login" className="text-black-700 font-semibold hover:underline">
+                    Login
+                  </Link>
+                </>
+              }
               <Link to="/profile" className="text-black-700 font-semibold hover:underline">
                 Profile
               </Link>
@@ -60,15 +74,19 @@ function App() {
               <Link to="/team" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
                 Team
               </Link>
-              <Link to="/register" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
-                Register
-              </Link>
-              <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
-                Login
-              </Link>
-              <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
-                Logout
-              </Link>
+              {
+                isLoggedIn ? 
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
+                    Logout
+                  </Link>
+                : <> <Link to="/register" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
+                    Register
+                  </Link>
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
+                    Login
+                  </Link>
+                </>
+              }
               <Link to="/profile" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
                 Profile
               </Link>
