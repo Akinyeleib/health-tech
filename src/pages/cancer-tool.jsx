@@ -44,7 +44,7 @@ return (
       </h1>
       <p className="text-gray-600 text-center mb-2">
         { full_name && (
-          <h2> Welcome {full_name}! </h2>
+          <> Welcome {full_name}! </>
         ) }
         Enter your symptoms to assess cancer risk and detect potential emergencies.
       </p>
