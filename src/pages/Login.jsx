@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axiosReq from '../../interceptor';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,11 @@ function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const keys = ['health-tech-token', 'health-tech-full-name', 'health-tech-phone-number']
+    keys.forEach(key => localStorage.removeItem(key))
+  }, [])
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

@@ -34,7 +34,7 @@ function App() {
               <Link to="/login" className="text-black-700 font-semibold hover:underline">
                 Login
               </Link>
-              <Link to="/logout" className="text-black-700 font-semibold hover:underline">
+              <Link to="/login" className="text-black-700 font-semibold hover:underline">
                 Logout
               </Link>
               <Link to="/profile" className="text-black-700 font-semibold hover:underline">
@@ -66,7 +66,7 @@ function App() {
               <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
                 Login
               </Link>
-              <Link to="/loout" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
+              <Link to="/login" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
                 Logout
               </Link>
               <Link to="/profile" onClick={() => setMenuOpen(false)} className="text-black-700 font-semibold hover:underline">
@@ -86,7 +86,6 @@ function App() {
             <Route path="/cancer-tool" element={<CancerTool />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/predictions" element={<Predictions />} />
             <Route path="/predictions/:id" element={<PredictionDetail />} />
