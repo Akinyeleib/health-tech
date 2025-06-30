@@ -3,28 +3,30 @@ import './cancer-tool.css';
 import axiosReq from '../../interceptor';
 
 const CancerTool = () => {
-  const [painSeverity, setPainSeverity] = useState(0);
   const [result, setResult] = useState(null);
   const age_limit = {
     default: 21,
-    minimim: 32,
+    minimim: 18,
     maximum: 100
   }
+  const [painSeverity, setPainSeverity] = useState(0);
+  const phone_number = localStorage.getItem('health-tech-phone-number') || 'Guest'
+  const [form, setForm] = useState({ 
+    phone_number, age: age_limit.default, family_history: 0, fatigue: 0, weight_loss: 0,
+    pain: 0, fever: 0, night_sweats: 0, bleeding: 0, lumps: 0,
+    cough: 0, bowel_bladder_changes: 0, pain_severity: 0, weight_loss_amount: 0, 
+    bleeding_severity: 0, vital_sign_abnormalities: 0
+  });
   const full_name = localStorage.getItem('health-tech-full-name') || undefined
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
     try {
-      const response = await axiosReq.post('/',
-        new URLSearchParams(data).toString(),
-        {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-      );
-
+      const response = await axiosReq.post('/', form);
       if (response.status != 200) throw new Error('Network response not ok');
       const resultData = response.data
       setResult(resultData);
@@ -61,7 +63,8 @@ return (
                 name="age"
                 min={ age_limit.minimim }
                 max={ age_limit.maximum }
-                defaultValue={ age_limit.default }
+                value={form.age}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               />
@@ -70,6 +73,8 @@ return (
               Sex
               <select
                 name="sex"
+                value={form.sex}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               >
@@ -81,6 +86,8 @@ return (
               Family History of Cancer
               <select
                 name="family_history"
+                value={form.family_history}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               >
@@ -95,7 +102,7 @@ return (
         <div>
           <h3 className="text-xl font-semibold text-gray-700 mb-4">Symptoms</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-           {[
+          {[
             'fatigue', 'weight_loss', 'pain', 'fever',
             'night_sweats', 'bleeding', 'lumps', 'cough', 'bowel_bladder_changes'
           ].map((field) => (
@@ -106,6 +113,8 @@ return (
                 {field.replace(/_/g, ' ')}
                 <select
                   name={field}
+                  value={form.field}
+                  onChange={handleChange}
                   required
                   className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
                 >
@@ -126,8 +135,11 @@ return (
                 name="pain_severity"
                 min="0"
                 max="10"
-                value={painSeverity}
-                onChange={(e) => setPainSeverity(e.target.value)}
+                value={form.painSeverity}
+                onChange={(e) => {
+                  setPainSeverity(e.target.value)
+                  handleChange(e)
+                }}
                 required
                 className="w-full mt-2"
               />
@@ -141,7 +153,8 @@ return (
                 name="weight_loss_amount"
                 min="0"
                 step="0.1"
-                defaultValue={0}
+                value={form.weight_loss_amount}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               />
@@ -151,6 +164,8 @@ return (
               Bleeding Severity
               <select
                 name="bleeding_severity"
+                value={form.bleeding_severity}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               >
@@ -165,6 +180,8 @@ return (
               Vital Sign Abnormalities
               <select
                 name="vital_sign_abnormalities"
+                value={form.vital_sign_abnormalities}
+                onChange={handleChange}
                 required
                 className="mt-1 w-full border px-3 py-2 rounded focus:ring-2 focus:ring-orange-500"
               >
